@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title_block%} Blogs {% endblock %}</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">
+                    <img src="/media/profile_pics/cartorn.jpg" alt="" width="30px">
+                </a>
+            </li>
+            {% if user.is_authenticated %}
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    @{{user.username}}
+                </a>
+                <div class="dropdown-menu mydrop" >
+                    <a class="dropdown-itme "  href="{% url 'App_Blog:create_blog' %}">Write Blog</a> <hr>
+                    <a class="dropdown-itme "  href="{% url 'App_Blog:my_blogs' %}">My Blogs</a> <hr>
+
+                    <a class="dropdown-itme "  href="{% url 'App_login:profile' %}">Your Profile</a> <hr>
+                    <a class="dropdown-itme " href="{% url 'App_login:logout' %}">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'App_login:signup' %}">SignUp</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'App_login:login' %}">Login</a>
+            </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+
+
+    <div class="container" style="padding-top: 20px;">
+        {% block content %}
+
+
+
+
+
+        {% endblock content %}
+    </div>
+
+
+
+</body>
+
+</html>

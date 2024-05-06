@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title_block %} Login {% endblock %}
+
+
+{% block content %}
+
+{% if Login %}
+<div class="alert alert-success">
+    Username or Passowrd incorrect ! <a href="{% url 'App_login:login' %}">Try Agian </a>
+</div>
+{% else %}   
+
+<h2>Login: </h2>
+
+
+
+<form method="POST" class="signup">
+
+    {% csrf_token %}
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="psw">Password:</label>
+    <input type="password" id="psw" name="password" required> <br>
+
+    <!-- <label for="psw_reapt">Repeat Password:</label>
+    <input type="password" id="psw_repeat" name="password2" required> <br> -->
+    
+    <input type="submit" value="Login" class="btn btn-success">
+</form>
+<br>
+
+<p>Create an Account! <a href="{% url 'App_login:signup' %}">SignUp </a> </p>
+
+
+
+
+{% endif %}
+{% endblock content %}

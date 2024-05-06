@@ -1,0 +1,22 @@
+
+.myhome{
+    color: red ;
+}
+
+.signup{
+    display:grid;
+    width: 400px;
+
+}
+
+.mydrop{
+    background-color: antiquewhite;
+}
+
+.itmes{
+    display: grid;
+    justify-content: center;
+    text-decoration: none;
+
+
+}

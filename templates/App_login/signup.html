@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title_block %} Create New Account {% endblock %}
+
+
+{% block content %}
+
+{% if registered %}
+<div class="alert alert-success">
+    Account Created Successfully ! <a href="{% url 'App_login:login' %}">Login Here </a>
+</div>
+
+{% endif %}
+<h2>Create New Account: </h2>
+
+<form method="POST" class="signup">
+    {% csrf_token %}
+     
+
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" name="first_name" required>
+
+        
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" name="last_name" required>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password1">Password:</label>
+    <input type="password" id="password1" name="password1" required> 
+
+    <label for="password2">Confrom Password:</label>
+    <input type="password" id="password2" name="password2" required> <br>
+    <!-- <label for="psw_reapt">Repeat Password:</label>
+    <input type="password" id="psw_repeat" name="password2" required> <br> -->
+    
+    <input type="submit" value="Submit" class="btn btn-success">
+</form>
+<br>
+
+<p>Already have an account? <a href="{% url 'App_login:login' %}">Login</a> </p>
+
+
+{% endblock content %}

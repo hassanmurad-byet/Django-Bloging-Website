@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title_block %} Profile {% endblock %}
+
+
+{% block content %}
+
+<h2>Add Your Profile pic </h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit" class="btn btn-success btn-sm">Add</button>
+
+</form>
+
+{% endblock content %}
